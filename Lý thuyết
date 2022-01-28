@@ -1,0 +1,78 @@
+1) Các loại Selector
++ Với WebdriverIO chúng ta sẽ dùng 2 loại:
+- CSS Selector
+- XPATH
+
+- Nếu Web Element là id, thì css selector là: #id_value
+- Nếu Web Element là class, thì css selector là: .class_value
+- Nếu Web Element là Link Text, thì css selector là: =link_text_value
+- Nếu dùng các attribute khác thì css selector là: [attribute_name='value']
+
+- Ưu tiên dùng CSS Selector hơn XPATH. Thường thì XPATH là lựa chọn sau cùng trong cách xác định vị trí Web Element trên 1 page
+
+Cấu trúc:
+//tagName[@attributeName='attributeValue']
+//*[@attributeName='attributeValue']
+Ví dụ:
+//input[@type='text']
+//label[@id='id_name']
+//input[@value='value']
+//a[@href='https://google.com']
+//img[@src='/images/teo.png']
+//*[@class='className']
+------------------------------------------------------------------------------------------------------------------------------------
+
+2) Các công cụ hỗ trợ trong quá trình lấy Selector
++ Dùng browser Inspector - Cách cơ bản
+  Css Selector = '#lst-ib'
+  XPATH = '//*[@id="lst-ib"]'
++ Dùng browser Inspector - Cách nâng cao
+  Css Selector = '#gbwa > div.gb_Qc > a'
+  XPATH = '//*[@id="gbwa"]/div[1]/a'
++ Chúng ta nên cố gắng tìm các giá trị khác nhau để xác định selector value
+Css Selector = "[title="Google apps"]"
++ Dùng console trên Browser Developer Tool để kiểm tra
+Cách 1: $(selector_value) => $('#lst-ib')
+Cách 2: document.querySelector(selector_value) => document.querySelector('#lst-ib')
+------------------------------------------------------------------------------------------------------------------------------------
+
+3) Dùng mocha framework để tổ chức test script
++ Cấu trúc 1 test script đơn giản với mocha
+- describe: Nhận vào 2 đối số: 1 là string (Mô tả testcase đó làm gì), 2 là callback 
+- it: Nhận vào 2 đối số: 1 là string (Mô tả testcase đó làm gì), 2 là callback (Thực thi đoạn code xử lý testcase)
+
+describe('Test Suite A: Login', () => {
+    it('Test Case 01: Login Sucessfully', () => {
+        // Coding
+    });
+    it('Test Case 02: Login Failed', () => {
+        // Coding
+    });
+})
+------------------------------------------------------------------------------------------------------------------------------------
+
+4) Selenium standalone server và chromedriver
++ Selenium server điều khiển các browser thông qua các browser driver(chromedriver, geckodriver - Firefox, Safari Driver...)
++ Chromedriver được thiết kế như 1 stand-alone-server. Được dùng để điều khiển chrome browser
+------------------------------------------------------------------------------------------------------------------------------------
+
+5) Các cách khởi động các browser drivers
+Cách 1) Chrome driver
+B1: Để khởi động, chúng ta có thể download và khởi động trực tiếp chrome driver (gõ chromedriver trên google để tìm kiếm)
+B2: Unzip và double click để chạy
+=> Ưu điểm là chúng ta có thể khởi động trên 1 máy nào đó và yêu cầu browser test trên máy đó
+=> Nhược điểm là chúng ta phải tự khởi động
+
+Cách 2) @wdio/selenium-standalone-service
+B1: Dùng để download và khởi động các browser version (Chúng ta không cần tự khởi động)
+B2: Gõ: npm install @wdio/selenium-standalone-service
+=> Ưu điểm là chúng ta không cần tự khởi động browser driver bằng tay nữa
+=> Nhược điểm là không yêu cầu resource browser test trên máy khác được
+
+
+
+
+
+
+
+
