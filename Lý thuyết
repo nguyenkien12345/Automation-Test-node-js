@@ -68,6 +68,23 @@ B1: Dùng để download và khởi động các browser version (Chúng ta khô
 B2: Gõ: npm install @wdio/selenium-standalone-service
 => Ưu điểm là chúng ta không cần tự khởi động browser driver bằng tay nữa
 => Nhược điểm là không yêu cầu resource browser test trên máy khác được
+------------------------------------------------------------------------------------------------------------------------------------
+
+6) File cấu hình cho việc test 
+Khi test cần phải có file cấu hình cho việc test để cấu hình:
+(Vào webdriver.io => Developer Guide => Testrunner => Configuration File)
+- specs: Chỉ ra các file test script cần test
+- host: địa chỉ IP của máy để yêu cầu resource test
+- port: Là port của selenium server hoặc browser driver
+- path: (Chỉ cần khi ta khởi động browser driver)
+- capabilities: (Test với những tham số nào)
+  - browserName: `chrome`
++ Test framework options:
+  'framework':'mocha',
+    'mochaOtps': {
+      'ui':'bdd',
+      'timeout': 600000 (Thời gian cho 1 cái test suit nó chạy)
+    }
 
 
 
